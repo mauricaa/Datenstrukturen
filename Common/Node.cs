@@ -1,8 +1,8 @@
 ﻿namespace Common
 {
-    public class Node
+    public class Node<T>
     {
-        public object Data;
-        public Node Next;
+        public T Data { get; set; }
+        public Node<T> Next { get; set; }
     }
 }
