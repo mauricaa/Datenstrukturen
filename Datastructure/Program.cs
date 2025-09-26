@@ -7,10 +7,10 @@ namespace Datastucture
     {
         static void Main()
         {
-            VerketteteListe list = new VerketteteListe();
+            VerketteteListe<Person> list = new VerketteteListe<Person>();
 
-            Person person1 = new Person("name");
-            Person person2 = new Person("name");
+            Person person1 = new Person("name1");
+            Person person2 = new Person("name2");
 
             list.Addlast(person1);
             list.Addlast(person2);

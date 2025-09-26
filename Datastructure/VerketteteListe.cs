@@ -1,22 +1,21 @@
 ﻿using Common;
+using System.Collections.Generic;
 
 namespace Datastucture
 {
-    public class VerketteteListe
+    public class VerketteteListe<T>
     {
-        public Node Head;
-        public void Addlast(object data)
+        public Node<T> Head { get; set; }
+        public void Addlast(T data)
         {
-            Node toAdd = new Node();
-            toAdd.Data = data;
+            Node<T> toAdd = new Node<T> { Data = data };
             if (Head == null)
             {
-                Head = new Node();
                 Head.Next = toAdd;
             }
             else
             {
-                Node current = Head;
+                Node<T> current = Head;
                 while (current.Next != null)
                 {
                     current = current.Next;
@@ -24,18 +23,18 @@ namespace Datastucture
                 current.Next = toAdd;
             }
         }
-        public bool CheckForObject(object toFind)
+        public bool CheckForObject(T toFind)
         {
-            Node current = Head;
+            Node<T> current = Head;
             while (current.Next != null)
             {
-                current = current.Next;
-                if (current.Data == toFind)
+                if (current.Data != null && EqualityComparer<T>.Default.Equals(current.Data, toFind))
+                {
                     return true;
+                }
+                current = current.Next;
             }
             return false;
         }
-
     }
 }
-
