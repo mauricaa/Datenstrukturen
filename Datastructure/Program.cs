@@ -1,5 +1,6 @@
 ﻿using Common;
 using Datastucture;
+using System;
 
 namespace Datastucture
 {
@@ -7,17 +8,36 @@ namespace Datastucture
     {
         static void Main()
         {
-            VerketteteListe<Person> list = new VerketteteListe<Person>();
+            VerketteteListe<int> list = new VerketteteListe<int>();
+            list.AddLast(1);
+            list.AddLast(3);
+            list.AddLast(12);
 
-            Person person1 = new Person("name1");
-            Person person2 = new Person("name2");
+            Console.WriteLine("Startliste:");
+            PrintList(list);
 
-            list.Addlast(person1);
-            list.Addlast(person2);
+            list.InsertBefore(3, 99);
+            Console.WriteLine("Nach InsertBefore(3, 99):");
+            PrintList(list);
 
-            bool result = list.CheckForObject(person1);
+            list.InsertAfter(12, 77);
+            Console.WriteLine("Nach InsertAfter(12, 77):");
+            PrintList(list);
 
-            Console.WriteLine(result);
+            Console.WriteLine("Position von 3: " + list.PosOfElement(3));
+            Console.WriteLine("Position von 99: " + list.PosOfElement(99));
+            Console.WriteLine("Position von 77: " + list.PosOfElement(77));
+        }
+
+        static void PrintList(VerketteteListe<int> list)
+        {
+            Node<int> current = list.Head;
+            while (current != null)
+            {
+                Console.Write(current.Data + " -> ");
+                current = current.Next;
+            }
+            Console.WriteLine("null");
         }
     }
 }
