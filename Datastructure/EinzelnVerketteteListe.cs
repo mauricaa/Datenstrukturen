@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Datastucture
 {
-    public class VerketteteListe<T>
+    public class EinzelnVerketteteListe<T>
     {
         public Node<T> Head { get; set; }
 
@@ -25,20 +25,6 @@ namespace Datastucture
                 }
                 current.Next = toAdd;
             }
-        }
-
-        public bool CheckForObject(T toFind)
-        {
-            Node<T> current = Head;
-            while (current != null)
-            {
-                if (EqualityComparer<T>.Default.Equals(current.Data, toFind))
-                {
-                    return true;
-                }
-                current = current.Next;
-            }
-            return false;
         }
 
         public void InsertBefore(T elementAfter, T elementToInsert)
@@ -67,9 +53,10 @@ namespace Datastucture
             throw new ArgumentException("Element not found in list");
         }
 
-        public void InsertAfter(T elementBefore, T elementToInsert)
+        public int InsertAfter(T elementBefore, T elementToInsert)
         {
             Node<T> newNode = new Node<T> { Data = elementToInsert };
+            int index = 0;
 
             Node<T> current = Head;
             while (current != null)
@@ -78,12 +65,13 @@ namespace Datastucture
                 {
                     newNode.Next = current.Next;
                     current.Next = newNode;
-                    return;
+                    return index+1;
                 }
                 current = current.Next;
+                index++;
             }
 
-            throw new ArgumentException("Element not found in list");
+            return -1;
         }
 
         public int PosOfElement(T element)
@@ -105,3 +93,6 @@ namespace Datastucture
         }
     }
 }
+
+//Alle drei Methoden haben die Laufzeitkomplexität O(n),
+//da im Worst Case die gesamte Liste durchsucht werden muss.
