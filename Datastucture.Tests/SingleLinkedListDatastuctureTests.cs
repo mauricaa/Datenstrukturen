@@ -10,7 +10,7 @@ namespace Datastucture.Tests
         [Test]
         public void AddLast_ShouldAddElements()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(1);
             list.AddLast(2);
 
@@ -21,7 +21,7 @@ namespace Datastucture.Tests
         [Test]
         public void InsertBefore_ShouldInsertElementCorrectly()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(1);
             list.AddLast(3);
             list.AddLast(5);
@@ -35,7 +35,7 @@ namespace Datastucture.Tests
         [Test]
         public void InsertAfter_ShouldInsertElementCorrectly()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(1);
             list.AddLast(3);
             list.AddLast(5);
@@ -49,7 +49,7 @@ namespace Datastucture.Tests
         [Test]
         public void PosOfElement_ShouldReturnMinusOne_WhenNotFound()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(10);
             list.AddLast(20);
 
@@ -59,7 +59,7 @@ namespace Datastucture.Tests
         [Test]
         public void InsertBefore_OnHead_ShouldInsertAtBeginning()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(5);
             list.AddLast(10);
 
@@ -72,19 +72,19 @@ namespace Datastucture.Tests
         [Test]
         public void InsertAfter_OnLastElement_ShouldAppend()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(5);
             list.AddLast(10);
 
-            list.InsertAfter(10, 99);
+            var posOfNewElement = list.InsertAfter(10, 99);
 
-            Assert.AreEqual(2, list.PosOfElement(99)); 
+            Assert.AreEqual(posOfNewElement, list.PosOfElement(99)); 
         }
 
         [Test]
         public void InsertBefore_ShouldThrow_WhenElementNotFound()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(1);
 
             Assert.Throws<ArgumentException>(() => list.InsertBefore(99, 5));
@@ -93,7 +93,7 @@ namespace Datastucture.Tests
         [Test]
         public void InsertAfter_ShouldThrow_WhenElementNotFound()
         {
-            var list = new VerketteteListe<int>();
+            var list = new EinzelnVerketteteListe<int>();
             list.AddLast(1);
 
             Assert.Throws<ArgumentException>(() => list.InsertAfter(99, 5));
