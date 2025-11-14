@@ -6,8 +6,8 @@ namespace Datastucture
 {
     public class DoppeltVerketteteListe<T>
     {
-        public DoubleNode<T> Head { get; set; } 
-        public DoubleNode<T> Tail { get; set; } 
+        public Node<T> Head { get; set; }
+        public Node<T> Tail { get; set; }
 
         public void AddLast(T data)
         {
