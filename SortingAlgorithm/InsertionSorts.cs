@@ -14,7 +14,7 @@ namespace SortingAlgorithm
             while (i != null)
             {
                 Node<T> j = head;
-                Node<T> nextI = i.Next;  
+                Node<T> nextI = i.Next;
 
                 while (j != i && j.Data.CompareTo(i.Data) > 0)
                 {
@@ -22,7 +22,7 @@ namespace SortingAlgorithm
                     j.Data = i.Data;
                     i.Data = temp;
 
-                    j = j.Next;  
+                    j = j.Next;
                 }
 
                 i = nextI;

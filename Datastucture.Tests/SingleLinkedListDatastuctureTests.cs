@@ -1,5 +1,5 @@
 using Datastucture.Tests;
- 
+
 using Datastucture;
 using NUnit.Framework;
 using System;
