@@ -69,25 +69,28 @@ namespace Datastucture
             insertionList.AddLast(4);
             insertionList.AddLast(2);
 
-            insertionList.SortAlgorithm = new InsertionSorts<int>();
+            insertionList.SortAlgorithm = SortAlgorithmFactory.Create<int>("insertionsort");
 
             Console.WriteLine("Vor Insertion Sort:");
             PrintDoubleList(insertionList);
-            insertionList.BubbleSort();
+            insertionList.Sort();
             Console.WriteLine("Nach Insertion Sort:");
             PrintDoubleList(insertionList);
 
             Console.WriteLine("BUBBLE SORT TEST");
-            DoppeltVerketteteListe<int> bubbleList = new DoppeltVerketteteListe<int>();
+            var bubbleList = new DoppeltVerketteteListe<int>();
             bubbleList.AddLast(5);
             bubbleList.AddLast(1);
             bubbleList.AddLast(4);
             bubbleList.AddLast(2);
+
+            bubbleList.SortAlgorithm = SortAlgorithmFactory.Create<int>("bubble");
+
             Console.WriteLine("Vor Sortierung (vorwärts):");
             PrintDoubleList(bubbleList);
             Console.WriteLine("Vor Sortierung (rückwärts):");
             PrintDoubleListReverse(bubbleList);
-            bubbleList.BubbleSort();
+            bubbleList.Sort();
             Console.WriteLine("Nach BubbleSort (vorwärts):");
             PrintDoubleList(bubbleList);
             Console.WriteLine("Nach BubbleSort (rückwärts):");
