@@ -106,5 +106,55 @@ namespace Datastucture
             }
             return -1;
         }
+
+        public void AddFirst(T data)
+        {
+            Node<T> newNode = new Node<T> { Data = data };
+
+            if (Head == null)
+            {
+                Head = newNode;
+                Tail = newNode;
+            }
+            else
+            {
+                newNode.Next = Head;
+                Head.Previous = newNode;
+                Head = newNode;
+            }
+        }
+
+        public T RemoveFirst()
+        {
+            if (Head == null)
+                throw new InvalidOperationException("Liste ist leer.");
+
+            T value = Head.Data;
+
+            if (Head == Tail) 
+            {
+                Head = null;
+                Tail = null;
+            }
+            else
+            {
+                Head = Head.Next;
+                Head.Previous = null;
+            }
+
+            return value;
+        }
+
+        public int Count()
+        {
+            int count = 0;
+            Node<T> current = Head;
+            while (current != null)
+            {
+                count++;
+                current = current.Next;
+            }
+            return count;
+        }
     }
 }
