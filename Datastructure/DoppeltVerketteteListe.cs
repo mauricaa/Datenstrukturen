@@ -13,10 +13,10 @@ namespace Datastucture
 
         public DoppeltVerketteteListe()
         {
-            SortAlgorithm = new BubbleSorts<T>();
+            SortAlgorithm = SortAlgorithmFactory.CreateDefault<T>();
         }
 
-        public void BubbleSort()
+        public void Sort()
         {
             SortAlgorithm?.Sort(Head);
         }
